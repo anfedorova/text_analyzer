@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Офіційно-діловий
+{% endblock %}
+{% block content %}
+    <div class="freq-block">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Символ</th>
+                <th scope="col">Частота</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for r in result %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ r.chars }}</td>
+                    <td>{{ r.frequency }}</td>
+                    <td><a href="{{url_for('delete', id=r.id, template='officially_business')}}" class="badge badge-primary badge-pill">Delete</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

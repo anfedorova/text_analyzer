@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Аналіз
+{% endblock %}
+{% block content %}
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <div class="file-block">
+                    <form method="POST" novalidate enctype=multipart/form-data>
+                        {{ form.hidden_tag() }}
+                        <div class="custom-file">
+                            {{ form.data.label(class_="custom-file-label") }}
+                            {{ form.data(class_="custom-file-input", id_='customFile') }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.choice.label }}<br>
+                            {{ form.choice(class_='form-control', id_='formControlSelect1') }}
+                        </div>
+                        <div>
+                            <button class="btn btn-lg btn-primary btn-block " type="submit">
+                                Аналізувати
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="text-block">
+                    <div class="form-group shadow-textarea">
+                        <label for="exampleFormControl">Текст файлу:</label>
+                        <div id='exampleFormControl' contenteditable="true" class="form-control"
+                             style="height:345px; word-wrap: anywhere; overflow-y: scroll; overflow-x: hidden">{{ text }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="freq-block">
+                    <table id='table' class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Символ</th>
+                            <th scope="col">Частота</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for key in result %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ key }}</td>
+                            <td>{{ result[key] }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let text = document.getElementById('exampleFormControl');
+
+    let t = document.getElementById('table');
+    t.addEventListener('click', function (event) {
+        text.innerHTML = text.textContent.replace(new RegExp(event.target.textContent, 'g'), `<span style="color:yellow">${event.target.textContent}</span>`);
+    })
+
+</script>
+
+{% endblock %}
+

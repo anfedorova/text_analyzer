@@ -1,0 +1,32 @@
+.file-block {
+    padding: 20px 0;
+}
+
+.file-block input[type=file] {
+    display: none;
+}
+
+.shadow-textarea textarea.form-control::placeholder {
+    font-weight: 300;
+}
+
+.shadow-textarea textarea.form-control {
+    padding-left: 0.8rem;
+}
+
+textarea.form-control {
+    height: calc(100vh - 230px) !important;
+    resize: none;
+}
+
+.freq-block {
+    position: relative;
+    height: calc(100vh - 22px);
+    overflow: auto;
+}
+
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+    content: "Пошук"!important;
+}
+
+

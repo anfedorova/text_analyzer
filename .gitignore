@@ -1,0 +1,9 @@
+venv/
+.idea/
+__pycache__/
+file/
+.vscode/
+geckodriver.log
+test.py
+scripts.pyc
+view.pyc
